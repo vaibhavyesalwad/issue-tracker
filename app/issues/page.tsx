@@ -45,4 +45,5 @@ const IssuesPage = async () => {
   );
 };
 
+export const revalidate = 10;
 export default IssuesPage;
