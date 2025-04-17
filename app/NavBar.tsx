@@ -17,7 +17,6 @@ import {
 const NavBar = () => {
   const pathname = usePathname();
   const { status, data: session } = useSession();
-  console.log(session?.user?.email, session?.user?.name);
 
   const links = [
     {
@@ -60,22 +59,21 @@ const NavBar = () => {
             {status === "authenticated" && (
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
-                  <Text>
-                    <Avatar
-                      src={session.user!.image!}
-                      fallback="?"
-                      size="2"
-                      radius="full"
-                      className="cursor-pointer"
-                    />
-                  </Text>
+                  <Avatar
+                    src={session.user!.image!}
+                    fallback="?"
+                    size="2"
+                    radius="full"
+                    className="cursor-pointer"
+                    referrerPolicy="no-referrer"
+                  />
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content>
                   <DropdownMenu.Label>
                     <Text size="2">{session.user!.email}</Text>
                   </DropdownMenu.Label>
                   <DropdownMenu.Item>
-                    <Link href="/api/auth/signout">Sign Out</Link>
+                    <Link href="/api/auth/signout">Log out</Link>
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
               </DropdownMenu.Root>
